@@ -28,6 +28,6 @@ setuptools.setup(
     packages=["qol", "qol.colour", "qol.date", "qol.number", "qol.string"],
     include_package_data=True,
     install_requires=["typing"],
-    package_dir={"": "qol"},
+    package_dir={"": "src"},
     python_requires=">=3.0",
 )
