@@ -4,14 +4,14 @@ with open("README.md", "r", encoding="utf-8") as f:
     long_description = f.read()
 
 setuptools.setup(
-    name="qol",
+    name="pyqol",
     version="0.1.1",
     description="A suite of random but useful functions that are aimed at giving you 'piece of cake' level comfortability",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/lewisjr/py-qol.git",
+    url="https://github.com/lewisjr/pyqol.git",
     project_urls={
-        "Bug Tracker": "https://github.com/lewisjr/py-qol/issues",
+        "Bug Tracker": "https://github.com/lewisjr/pyqol/issues",
     },
     author = "Cerebrus Inc | Lewis Mosho Jr",
     author_email = "lewis@cerebrus.dev",
@@ -25,7 +25,7 @@ setuptools.setup(
         "Intended Audience :: Developers",
         "Typing :: Typed"
     ],
-    packages=["qol", "qol.colour", "qol.date", "qol.number", "qol.string"],
+    packages=["pyqol", "pyqol.colour", "pyqol.date", "pyqol.number", "pyqol.string"],
     include_package_data=True,
     install_requires=["typing"],
     package_dir={"": "src"},

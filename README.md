@@ -2,7 +2,7 @@
     <img src="https://drive.google.com/uc?id=1r9L_Kjdm1i4lCYOCq-bngr-yTl6OZ_lu" alt="py-qol logo" width="250" height="250" />
 </p>
 
-# qol v0.1.1
+# pyqol v0.1.1
 
 Are you tired of making the same module in every project? Not a problem! Qol has your back.
 
@@ -10,20 +10,20 @@ A suite of random but useful functions that are aimed at giving you "piece of ca
 
 # Installation
 
-    pip install qol
+    pip install pyqol
 
 or
 
-    pip3 install qol
+    pip3 install pyqol
 
 # Importing
 
 ```python
 # full import
-import qol
+import pyqol
 
 # partial imports
-from qol import random_colour, parse_date, num_parse, abbreviate, to_title_case, to_sentence_case
+from pyqol import random_colour, parse_date, num_parse, abbreviate, to_title_case, to_sentence_case
 ```
 
 # Functions

@@ -3,4 +3,4 @@ __pycache__/
 .vscode/
 venv/
 dist/
-src/qol.egg-info
+src/pyqol.egg-info
