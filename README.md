@@ -8,6 +8,14 @@ Are you tired of making the same module in every project? Not a problem! Qol has
 
 A suite of random but useful functions that are aimed at giving you "piece of cake" level comfortability. This is a python port of the [javascript quality of life](https://github.com/lewisjr/qol) package
 
+# Installation
+
+    pip install qol
+
+or
+
+    pip3 install qol
+
 # Importing
 
 ```python
