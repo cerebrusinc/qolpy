@@ -1,3 +1,23 @@
+Metadata-Version: 2.1
+Name: qolpy
+Version: 0.1.1
+Summary: A suite of random but useful functions that are aimed at giving you 'piece of cake' level comfortability
+Home-page: https://github.com/lewisjr/qolpy.git
+Author: Cerebrus Inc | Lewis Mosho Jr
+Author-email: lewis@cerebrus.dev
+Project-URL: Bug Tracker, https://github.com/lewisjr/qolpy/issues
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Utilities
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Plugins
+Classifier: Intended Audience :: Developers
+Classifier: Typing :: Typed
+Requires-Python: >=3.0
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
 <p align="center">
     <img src="https://drive.google.com/uc?id=1r9L_Kjdm1i4lCYOCq-bngr-yTl6OZ_lu" alt="py-qol logo" width="250" height="250" />
 </p>
