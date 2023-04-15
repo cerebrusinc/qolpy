@@ -1,4 +1,8 @@
-# qol
+<p align="center">
+    <img src="https://drive.google.com/uc?id=1r9L_Kjdm1i4lCYOCq-bngr-yTl6OZ_lu" alt="py-qol logo" width="250" height="250" />
+</p>
+
+# qol v0.1.1
 
 Are you tired of making the same module in every project? Not a problem! Qol has your back.
 
@@ -6,30 +10,31 @@ A suite of random but useful functions that are aimed at giving you "piece of ca
 
 # Importing
 
-```py
+```python
 # full import
 import qol
 
 # partial imports
-from qol import random_colour, parse_date
+from qol import random_colour, parse_date, num_parse, abbreviate, to_title_case, to_sentence_case
 ```
 
 # Functions
 
-## randomColour
+## random_colour
 
 Get a random colour; For those scenarios where you couldn't care less!
 
 Returns a `string`
 
-```javascript
-const c = randomColour();
-const cRGB = randomColour("rgb");
-const cCMYK = randomColour("cmyk");
-const cHSV = randomColour("hsv");
-const cHSL = randomColour("hsl");
-console.log(c, cRGB, cCMYK, cHSV, cHSL);
-// #f7f7f7, rgb(247,247,247), cmyk(0%,0%,0%,3%), hsv(0,0%,97%), hsl(0,0%,97%)
+```python
+c = random_colour()
+c_rgb = random_colour("rgb")
+c_cmyk = random_colour("cmyk")
+c_hsv = random_colour("hsv")
+c_hsl = random_colour("hsl")
+
+print(c, c_rgb, c_cmyk, c_hsv, c_hsl);
+# #f7f7f7, rgb(247,247,247), cmyk(0%,0%,0%,3%), hsv(0,0%,97%), hsl(0,0%,97%)
 ```
 
 <details>
@@ -42,47 +47,47 @@ console.log(c, cRGB, cCMYK, cHSV, cHSL);
 </details>
 <br />
 
-## parseDate
+## parse_date
 
 Send in date parameters and receive either an object with their metadata, or a parsed date (e.g `2 Sep 2020`); American formatting is possible (e.g `Sep 2 2020`).
 
-**NOTE:** You do not need to add 1 to the day or month, it will do that for you.
+Returns a `string` or `Date_Object`. You can spread the args and use kwargs such as below:
 
-Returns a `string` or `DateObject`
+```python
+import datetime
 
-```javascript
-const d = new Date();
-const dateArr = [d.getDate(), d.getDay(), d.getMonth(), d.getFullYear()];
-const pD = parseDate(...dateArr, "nll", true);
-const pDfull = parseDate(...dateArr, "lll");
-console.log(pD, pDfull);
-// October 24 2022, Monday 24th October 2022
+dt = datetime.datetime.now()
+date_list = [dt.day, dt.weekday(), dt.month, dt.year]
+
+pd = parse_date(*date_list, c_format="nll", american=True)
+pd_full = parse_date(*date_list, c_format="lll")
+
+print(pd, pd_full)
+# April 15 2023, Saturday 15th April, 2023
 ```
 
 <details>
 <summary><strong>interface</strong></summary>
 
-```ts
-interface DateObject {
-	day: {
-		short: string;
-		long: string;
-		ordinalMonth: string;
-		ordinalWeek: string;
-		weekNumber: number;
-		monthNumber: number;
-	};
-	month: {
-		short: string;
-		long: string;
-		ordinal: string;
-		number: number;
-	};
-	year: {
-		short: number;
-		long: number;
-	};
-}
+```python
+	"day": {
+		"short": str,
+		"long": str,
+		"ordinal_month": str,
+		"ordinal_week": str,
+		"week_number": int,
+		"month_number": int
+	},
+	"month": {
+		"short": str,
+		"long": str,
+		"ordinal": str,
+		"number": int
+	},
+	"year": {
+		"short": int,
+		"long": int
+	}
 ```
 
 </details>
@@ -103,18 +108,19 @@ interface DateObject {
 </details>
 <br />
 
-## numParse
+## num_parse
 
 Convert a number into a string as if it's MS Excel!
 
 Returns a `string`
 
-```javascript
-const num = numParse(2100.45, "space");
-const numEurope = numParse(2100.45, "punct");
-const numCustom = numParse(2100.45, "-");
-console.log(num, numEurope, numCustom);
-// 2 100.45, 2,100.45, 2-100.45)
+```python
+num = num_parse(2100.45)
+num_europe = num_parse(2100.45, "punct")
+num_custom = num_parse(2100.45, "-")
+
+print(num, num_europe, num_custom)
+# 2,100.45, 2.100,45, 2-100.45)
 ```
 
 <details>
@@ -128,37 +134,91 @@ console.log(num, numEurope, numCustom);
 </details>
 <br />
 
+## abbreviate
+
+```python
+name = "lEwiS mOsho junior"
+
+print(abbreviate(name))
+# LMJ
+```
+
+Make an **abbreviation** of a string; Usually used for names. It returns an upper case abbreviation of the string.
+
+<details>
+<summary><strong>Params</strong></summary>
+
+| Parameter | Default Setting | Required? | Definition                                                 |
+| --------- | --------------- | --------- | ---------------------------------------------------------- |
+| text      | `null`          | Yes       | The string you wish to abbreviate                          |
+| delimiter | `" "`           | No        | The character or string that seperates words in the string |
+
+</details>
+<br />
+
+## to_title_case
+
+Make any string **title cased**. it returns a string in which every first letter of a word is upper cased with the rest being lower cased.
+
+```python
+const name = "lEwiS mOsho junior"
+
+print(to_title_case(name))
+# Lewis Mosho Junior
+```
+
+<details>
+<summary><strong>Params</strong></summary>
+
+| Parameter | Default Setting | Required? | Definition                                                 |
+| --------- | --------------- | --------- | ---------------------------------------------------------- |
+| text      | `null`          | Yes       | The string you wish to change to title case                |
+| delimiter | `" "`           | No        | The character or string that seperates words in the string |
+
+</details>
+<br />
+
+## to_sentence_case
+
+Make any string **sentence cased**; The current sentence delimiters are:
+
+- `.`
+- `;`
+- `:`
+- `!`
+- `?`
+
+It returns a string in which every first letter of the first word of a sentence is capitalised, with the remainder of the senter being lower cased.
+
+```python
+sentence = "heLLo wOrLD, mY NAME is lEwis; i am a Developer."
+
+print(to_sentence_case(sentence))
+# Hello world, my name is lewis; I am a developer.
+```
+
+<details>
+<summary><strong>Params</strong></summary>
+
+| Parameter | Default Setting | Required? | Definition                                                 |
+| --------- | --------------- | --------- | ---------------------------------------------------------- |
+| txt       | `null`          | Yes       | The string you wish to change to sentence case             |
+| delimiter | `" "`           | No        | The character or string that seperates words in the string |
+
+</details>
+<br />
+
 # Changelog
 
 ## v0.1.x
 
 <details open>
-<summary><strong>v0.1.3</strong></summary>
-
-- Fully added `numParse()`
-  - Add delimiters to your numbers, ideal for frontend
-
-</details>
-
-<details>
-<summary><strong>v0.1.2</strong></summary>
-
-- Fully added `parseDate()`
-  - Get date params (e.g long text version and numeric verison) in an object or a parsed date as text e.g '2 Sep 2020'
-  - Can return in American format eg 'Sep 2 2020'
-  - View the param options to see how many different types of date formats you can choose
-
-</details>
-
-<details>
 <summary><strong>v0.1.1</strong></summary>
 
-- Type hint updates
-- README restructuring
-- Source resturing
-- Update to `randomColour()`
-  - Get the colour as a hex, rgb, cmyk, hsv, or hsl string
-- Parse date funtion (WIP)
+- README completed
+- `parse_date` error fixed
+  - Used tp return `month` object when `nll` was specifically set as an arg for `c_format`
+- Moved codebase into `src` folder
 
 </details>
 
@@ -166,6 +226,6 @@ console.log(num, numEurope, numCustom);
 <summary><strong>v0.1.0</strong></summary>
 
 - Initial release
-- Sentence casing, title casing, and abrreviations added and typed
+- Excel number formatting, date parsing, random colour generation,string sentence casing, title casing, and abrreviations added and typed
 
 </details>

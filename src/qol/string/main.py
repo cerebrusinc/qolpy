@@ -21,7 +21,7 @@ def abbreviate(text: str, delimiter: str = " ", reverse: bool = False) -> str:
 
     return initials.upper()
 
-def toTitleCase(text: str, delimiter: str = " ") -> str:
+def to_title_case(text: str, delimiter: str = " ") -> str:
     """
     Make a string title case.
 
@@ -38,7 +38,7 @@ def toTitleCase(text: str, delimiter: str = " ") -> str:
 
     return delimiter.join(text_list)
 
-def toSentenceCase (text: str, delimiter: str = " ") -> str:
+def to_sentence_case (text: str, delimiter: str = " ") -> str:
     """
     Make a string sentence case.
     
