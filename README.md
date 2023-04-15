@@ -137,7 +137,7 @@ print(num, num_europe, num_custom)
 | Parameter | Default Setting | Required? | Definition                       | Options                                                    |
 | --------- | --------------- | --------- | -------------------------------- | ---------------------------------------------------------- |
 | value     | `undefined`     | Yes       | The number you want to be parsed | `none`                                                     |
-| setting   | `undefined`     | Yes       | The delimiter for the number     | `space`, `comma`, `punct`, any other delimiter as a string |
+| setting   | `comma`         | No        | The delimiter for the number     | `space`, `comma`, `punct`, any other delimiter as a string |
 
 </details>
 <br />
