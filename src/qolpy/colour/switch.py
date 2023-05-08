@@ -1,4 +1,4 @@
-from typing import Literal, Union, Any
+from typing import Union, Literal, Any, List, Tuple
 from .interface import Colour_Setting
 
 class FauxSwitch(object):
@@ -10,7 +10,7 @@ class FauxSwitch(object):
         return colour_switch(r_hex)
     
     @staticmethod
-    def __compute_colour__(r: int, g: int, b: int, setting: Literal["cmyk", "hs*"]) -> list[float]:
+    def __compute_colour__(r: int, g: int, b: int, setting: Literal["cmyk", "hs*"]) -> List[float]:
         if setting == "cmyk":
             cc: float = 1 - r / 255
             cm: float = 1 - g / 255
@@ -25,7 +25,7 @@ class FauxSwitch(object):
         c_max: float = max(cr, cg, cb)
         return [cr, cg, cb, c_min, c_max]
     
-    def __to_rgb__(self, r_hex: str) -> tuple[str, int, int, int]:
+    def __to_rgb__(self, r_hex: str) -> Tuple[str, int, int, int]:
         """
         Convert a hex to RGB
     
@@ -43,7 +43,7 @@ class FauxSwitch(object):
 
         return (as_string, r, g, b)
 
-    def __to_cmyk__(self, r_hex: str) -> tuple[str, float, float, float, float]:
+    def __to_cmyk__(self, r_hex: str) -> Tuple[str, float, float, float, float]:
         """
         Convert a hex to CMYK
 	
@@ -73,7 +73,7 @@ class FauxSwitch(object):
 
         return (as_string, c, m, y, k)
     
-    def __to_hsv__(self, r_hex: str) -> tuple[str, float, float, float]:
+    def __to_hsv__(self, r_hex: str) -> Tuple[str, float, float, float]:
         """
         Convert a hex to HSV
 	
@@ -100,7 +100,7 @@ class FauxSwitch(object):
 
         return (as_string, h, s, v)
 
-    def __to_hsl__(self, r_hex: str) -> tuple[str, float, float, float]:
+    def __to_hsl__(self, r_hex: str) -> Tuple[str, float, float, float]:
         """
 	    Convert a hex to HSL
 

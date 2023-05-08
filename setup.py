@@ -5,13 +5,13 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 setuptools.setup(
     name="qolpy",
-    version="0.1.1",
+    version="0.1.2",
     description="A suite of random but useful functions that are aimed at giving you 'piece of cake' level comfortability",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/lewisjr/qolpy.git",
+    url="https://github.com/cerebrusinc/qolpy.git",
     project_urls={
-        "Bug Tracker": "https://github.com/lewisjr/qolpy/issues",
+        "Bug Tracker": "https://github.com/cerebrusinc/qolpy/issues",
     },
     author = "Cerebrus Inc | Lewis Mosho Jr",
     author_email = "lewis@cerebrus.dev",

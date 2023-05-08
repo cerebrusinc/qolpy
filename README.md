@@ -2,11 +2,11 @@
     <img src="https://drive.google.com/uc?id=1r9L_Kjdm1i4lCYOCq-bngr-yTl6OZ_lu" alt="py-qol logo" width="250" height="250" />
 </p>
 
-# qolpy v0.1.1
+# qolpy v0.1.2
 
 Are you tired of making the same module in every project? Not a problem! Qol has your back.
 
-A suite of random but useful functions that are aimed at giving you "piece of cake" level comfortability. This is a python port of the [javascript quality of life](https://github.com/lewisjr/qol) and [javascript fstring](https://github.com/lewisjr/fstring) package
+A suite of random but useful functions that are aimed at giving you "piece of cake" level comfortability. This is a python port of the [javascript quality of life](https://github.com/cerebrusinc/qol) and [javascript fstring](https://github.com/cerebrusinc/fstring) package
 
 # Installation
 
@@ -41,7 +41,7 @@ c_cmyk = random_colour("cmyk")
 c_hsv = random_colour("hsv")
 c_hsl = random_colour("hsl")
 
-print(c, c_rgb, c_cmyk, c_hsv, c_hsl);
+print(c, c_rgb, c_cmyk, c_hsv, c_hsl)
 # #f7f7f7, rgb(247,247,247), cmyk(0%,0%,0%,3%), hsv(0,0%,97%), hsl(0,0%,97%)
 ```
 
@@ -221,6 +221,15 @@ print(to_sentence_case(sentence))
 ## v0.1.x
 
 <details open>
+<summary><strong>v0.1.2</strong></summary>
+
+- README updated
+  - Repo links updated
+- `color` dir typing fixed; No more import error
+
+</details>
+
+<details>
 <summary><strong>v0.1.1</strong></summary>
 
 - README completed
