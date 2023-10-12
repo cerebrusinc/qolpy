@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 setuptools.setup(
     name="qolpy",
-    version="0.1.2",
+    version="0.2.0",
     description="A suite of random but useful functions that are aimed at giving you 'piece of cake' level comfortability",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -13,8 +13,8 @@ setuptools.setup(
     project_urls={
         "Bug Tracker": "https://github.com/cerebrusinc/qolpy/issues",
     },
-    author = "Cerebrus Inc | Lewis Mosho Jr",
-    author_email = "lewis@cerebrus.dev",
+    author="Lewis Mosho Jr | Cerebrus Inc",
+    author_email="hello@cerebrus.dev",
     classifiers=[
         "License :: OSI Approved :: Apache Software License",
         "Programming Language :: Python :: 3",
@@ -23,9 +23,16 @@ setuptools.setup(
         "Development Status :: 5 - Production/Stable",
         "Environment :: Plugins",
         "Intended Audience :: Developers",
-        "Typing :: Typed"
+        "Typing :: Typed",
     ],
-    packages=["qolpy", "qolpy.colour", "qolpy.date", "qolpy.number", "qolpy.string"],
+    packages=[
+        "qolpy",
+        "qolpy.colour",
+        "qolpy.date",
+        "qolpy.number",
+        "qolpy.string",
+        "qolpy.logger",
+    ],
     include_package_data=True,
     install_requires=["typing"],
     package_dir={"": "src"},

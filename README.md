@@ -1,12 +1,21 @@
 <p align="center">
-    <img src="https://drive.google.com/uc?id=1r9L_Kjdm1i4lCYOCq-bngr-yTl6OZ_lu" alt="py-qol logo" width="250" height="250" />
+    <img src="https://drive.google.com/uc?id=1r9L_Kjdm1i4lCYOCq-bngr-yTl6OZ_lu" alt="qolpy logo" width="250" height="250" />
 </p>
 
-# qolpy v0.1.2
+# qolpy v0.2.0
 
 Are you tired of making the same module in every project? Not a problem! Qol has your back.
 
-A suite of random but useful functions that are aimed at giving you "piece of cake" level comfortability. This is a python port of the [javascript quality of life](https://github.com/cerebrusinc/qol) and [javascript fstring](https://github.com/cerebrusinc/fstring) package
+A suite of random but useful functions that are aimed at giving you "piece of cake" level comfortability.
+
+This package is also availabe as:
+
+- [qol • js/ts](https://www.npmjs.com/package/@cerebrusinc/qol)
+- [qolrus • rust](https://crates.io/crates/qolrus)
+
+Some functionality is derived from:
+
+- [fstring](https://www.npmjs.com/package/@techtronics/fstring)
 
 # Installation
 
@@ -23,7 +32,7 @@ or
 import qolpy
 
 # partial imports
-from qolpy import random_colour, parse_date, num_parse, abbreviate, to_title_case, to_sentence_case
+from qolpy import random_colour, parse_date, num_parse, abbreviate, to_title_case, to_sentence_case, Logger
 ```
 
 # Functions
@@ -216,11 +225,142 @@ print(to_sentence_case(sentence))
 </details>
 <br />
 
+## Logger
+
+Log code executions, stats, and processing times in any framework in any environment; and chain the logs to see the entire process in the terminal!
+
+Returns `None`
+
+**code example**
+
+```py
+from qolpy import Logger
+from .some_function import some_function
+from fastapi import FastAPI, Request
+
+app = FastAPI()
+logger = Logger()
+
+@app.middleware("http")
+async def handler(req: Request, call_next):
+	logger.new_log("log", req.method, req.url.path)
+
+	logger.log("log", "some_function", "Doing something...")
+	some_function()
+	logger.proc_time()
+
+	response = await call_next(req)
+
+	logger.execTime()
+	return response
+
+...
+```
+
+**terminal output**
+
+```sh
+[log • aGy5Op]: GET => /hello | 07 Oct 2023 @ 19:40
+[log • aGy5Op]: some_function => Doing something... | 07 Oct 2023 @ 19:40
+[stats • aGy5Op]: some_function => 53.24ms
+[exec • aGy5Op]: 121.07ms
+```
+
+<details>
+<summary><strong>Variables</strong></summary>
+
+| Variable      | Default Setting    | Required? | Definition                                                                 |
+| ------------- | ------------------ | --------- | -------------------------------------------------------------------------- |
+| id_length     | `5`                | No        | An `int` that determines the length of the log id                          |
+| american_date | `False`            | No        | A `bool` that determines whether the `parseDate` output should be american |
+| time_format   | `%d %b %Y @ %H:%M` | No        | A `str` that defines other options for the log time output                 |
+
+These can be set when initialising the `Logger` or dynamically. **NOTE** that you can initialise any of them as undefined through the constructor and it will set their default values, however, dynamically they will need a value of their type unless they can be undefined.
+
+```py
+# Set the americanDate param through the constructor
+logger = Logger(american_date=True)
+
+// set the americanDate param dynamically
+logger.american_date = False
+```
+
+</details>
+<br />
+
+<details>
+<summary><strong>Methods</strong></summary>
+
+| Method    | Type                                                                                 | Details                                                                                                                       |
+| --------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| new_log   | `(config: Union["stats", "log", "error"], process: string, message: string) -> None` | Create a new log chain; This will change the `log id`                                                                         |
+| log       | `(config: Union["stats", "log", "error"], process: string, message: string) -> None` | Add a log to the log chain; This will not change the `log id`                                                                 |
+| proc_time | `() -> void`                                                                         | Log the processing time between this call and the previous call to view their processing time                                 |
+| exec_time | `() -> void`                                                                         | View the entire execution time                                                                                                |
+| lax       | decorator                                                                            | Useful to measure the process time for a single function (sync or async); not chainable but can have inner processes chained. |
+
+**Decorator Example**
+
+```py
+logger = Logger()
+
+@logger.lax
+async def api_call() -> str:
+    req = requests.get("https://api.site.com/hello")
+    logger.log("log", "api_call", "request successfull!")
+
+    res = req.json()
+    return res["msg"]
+
+asyncio.run(api_call())
+```
+
+```sh
+[log • cy1zD]: api_call => Executing without args | 07 Oct 2023 @ 23:52
+[log • cy1zD]: api_call => request successfull!| 07 Oct 2023 @ 23:52
+[exec • cy1zD]: 107.09ms
+```
+
+If you add args and/or kwargs, it will log them too regardless of their type:
+
+```py
+logger = Logger()
+
+@logger.lax
+async def api_call(uri: str, log_type: str) -> str:
+    req = requests.get(uri)
+    logger.log(log_type, "api_call", "request successfull!")
+
+    res = req.json()
+    return res["msg"]
+
+asyncio.run(api_call("https://api.site.com/hello", log_type="log"))
+```
+
+```sh
+[log • cy1zD]: api_call => Executing with arg 'https://api.site.com/hello' and kwarg log_type='log' | 07 Oct 2023 @ 23:52
+[log • cy1zD]: api_call => request successfull!| 07 Oct 2023 @ 23:52
+[exec • cy1zD]: 107.09ms
+```
+
+</details>
+<br />
+
 # Changelog
+
+## v0.2.x
+
+<details open>
+<summary><strong>v0.2.0</strong></summary>
+
+- Added `Logger` class
+
+</details>
+<br />
 
 ## v0.1.x
 
-<details open>
+<details>
 <summary><strong>v0.1.2</strong></summary>
 
 - README updated

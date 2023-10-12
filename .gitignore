@@ -4,3 +4,4 @@ __pycache__/
 venv/
 dist/
 src/qolpy.egg-info/
+src/qolpy/test.py
