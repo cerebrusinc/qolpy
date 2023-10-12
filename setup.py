@@ -34,7 +34,6 @@ setuptools.setup(
         "qolpy.logger",
     ],
     include_package_data=True,
-    install_requires=["typing"],
     package_dir={"": "src"},
     python_requires=">=3.0",
 )
